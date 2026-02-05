@@ -1,0 +1,63 @@
+@baseUrl = http://localhost:8080
+@contentType = application/json
+@email = newuser-{{$randomInt}}@example.com
+@password = password123
+
+### 1. Register
+# @name register
+POST {{baseUrl}}/auth/register
+Content-Type: {{contentType}}
+
+{
+    "email": "{{email}}",
+    "password": "{{password}}"
+}
+
+### 2. Login
+# @name login
+POST {{baseUrl}}/auth/login
+Content-Type: {{contentType}}
+
+{
+    "email": "{{email}}",
+    "password": "{{password}}"
+}
+
+@accessToken = {{login.response.body.accessToken}}
+@refreshToken = {{login.response.body.refreshToken}}
+
+### 3. Get Profile (Me)
+GET {{baseUrl}}/me
+Authorization: Bearer {{accessToken}}
+
+### 4. Refresh Token
+POST {{baseUrl}}/auth/refresh
+Content-Type: {{contentType}}
+
+{
+    "refreshToken": "{{refreshToken}}"
+}
+
+### 5. Login as Admin
+# @name adminLogin
+POST {{baseUrl}}/auth/login
+Content-Type: {{contentType}}
+
+{
+    "email": "admin@example.com",
+    "password": "secret123"
+}
+
+@adminToken = {{adminLogin.response.body.accessToken}}
+
+### 6. Admin: List Users
+GET {{baseUrl}}/admin/users
+Authorization: Bearer {{adminToken}}
+
+### 7. Logout
+POST {{baseUrl}}/auth/logout
+Content-Type: {{contentType}}
+
+{
+    "refreshToken": "{{refreshToken}}"
+}

@@ -1,0 +1,23 @@
+# Environment variables
+.env
+
+# Composer dependencies
+/vendor/
+
+# PHPUnit
+.phpunit.result.cache
+/phpunit.xml.bak
+
+# IDE / Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Docker
+docker/db_data/
