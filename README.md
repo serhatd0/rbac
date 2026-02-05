@@ -39,7 +39,7 @@ docker/       # Configs
 
 1. **Clone & Setup**:
    ```bash
-   git clone https://github.com/yourusername/php-jwt-rbac-starter.git
+   git clone https://github.com/serhatd0/php-jwt-rbac-starter.git
    cd php-jwt-rbac-starter
    cp .env.example .env
    ```
