@@ -23,9 +23,9 @@ class Jwt
         $payload['iat'] = time();
         // Default 15 mins if not set
         if (!isset($payload['exp'])) {
-            $payload['exp'] = time() + (15 * 60); 
+            $payload['exp'] = time() + (15 * 60);
         }
-        
+
         $payloadJson = json_encode($payload);
 
         $base64UrlHeader = $this->base64UrlEncode($header);
@@ -54,7 +54,7 @@ class Jwt
         }
 
         $payload = json_decode($this->base64UrlDecode($payloadMd), true);
-        
+
         if (($payload['exp'] ?? 0) < time()) {
             throw new RuntimeException('Token expired');
         }

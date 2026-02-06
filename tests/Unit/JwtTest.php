@@ -13,7 +13,7 @@ class JwtTest extends TestCase
     {
         $jwt = new Jwt();
         $payload = ['sub' => 123, 'email' => 'test@example.com'];
-        
+
         $token = $jwt->encode($payload);
         $decoded = $jwt->decode($token);
 
@@ -28,7 +28,7 @@ class JwtTest extends TestCase
 
         $jwt = new Jwt();
         $payload = ['sub' => 123, 'exp' => time() - 3600];
-        
+
         $token = $jwt->encode($payload);
         $jwt->decode($token);
     }

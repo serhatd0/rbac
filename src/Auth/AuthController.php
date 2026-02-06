@@ -71,7 +71,7 @@ class AuthController
         if ($refreshToken) {
             $this->authService->logout($refreshToken);
         }
-        
+
         Response::json(null, 204);
     }
 }

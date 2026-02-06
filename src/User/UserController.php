@@ -20,7 +20,7 @@ class UserController
     {
         $userId = $request->getAttribute('user_id');
         $user = $this->userRepo->findById($userId);
-        
+
         if (!$user) {
             Response::error('User not found', 404);
         }

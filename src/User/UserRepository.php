@@ -36,17 +36,17 @@ class UserRepository
         $stmt->execute(['email' => $email, 'hash' => $passwordHash]);
         return (int)$this->db->lastInsertId();
     }
-    
-    public function assignRole(int $userId, string $roleName): void 
+
+    public function assignRole(int $userId, string $roleName): void
     {
          // Find role id
          $stmt = $this->db->prepare("SELECT id FROM roles WHERE name = :name");
          $stmt->execute(['name' => $roleName]);
          $role = $stmt->fetch();
-         
-         if ($role) {
-             $stmt = $this->db->prepare("INSERT IGNORE INTO user_roles (user_id, role_id) VALUES (:uid, :rid)");
-             $stmt->execute(['uid' => $userId, 'rid' => $role['id']]);
-         }
+
+        if ($role) {
+            $stmt = $this->db->prepare("INSERT IGNORE INTO user_roles (user_id, role_id) VALUES (:uid, :rid)");
+            $stmt->execute(['uid' => $userId, 'rid' => $role['id']]);
+        }
     }
 }

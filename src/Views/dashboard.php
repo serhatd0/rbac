@@ -1,4 +1,5 @@
-<?php $title = 'Dashboard - PHP JWT RBAC'; require __DIR__ . '/layout/header.php'; ?>
+<?php $title = 'Dashboard - PHP JWT RBAC';
+require __DIR__ . '/layout/header.php'; ?>
 
 <div class="auth-container dashboard-container">
     <div class="card">
@@ -77,4 +78,5 @@
 
     loadProfile();
 </script>
-<?php $scripts = ob_get_clean(); require __DIR__ . '/layout/footer.php'; ?>
+<?php $scripts = ob_get_clean();
+require __DIR__ . '/layout/footer.php'; ?>

@@ -48,12 +48,12 @@ class RefreshTokenService
         }
 
         // Revoke it (Refresh Rotation or simple revoke)
-        // For this task: "Logout: refresh token revoke". 
+        // For this task: "Logout: refresh token revoke".
         // Also usually on refresh used, we revoke old and issue new (Rotation).
         // The requirements just say "logout: refresh token revoke".
         // But for /refresh endpoint, we usually revoke the used one too to prevent replay if rotation is desired.
         // Let's implement explicit revoke method and verify method.
-        
+
         return $token;
     }
 

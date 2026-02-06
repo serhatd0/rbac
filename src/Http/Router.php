@@ -36,10 +36,9 @@ class Router
 
         foreach ($this->routes as $route) {
             if ($route['method'] === $method && preg_match($route['pattern'], $path, $matches)) {
-                
                 // Filter out integer keys from matches
                 $params = array_filter($matches, 'is_string', ARRAY_FILTER_USE_KEY);
-                
+
                 call_user_func($route['handler'], $request, ...array_values($params));
                 return;
             }

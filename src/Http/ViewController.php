@@ -20,8 +20,8 @@ class ViewController
     {
         Response::view('dashboard');
     }
-    
-    public function home(): void 
+
+    public function home(): void
     {
         // Redirect home to login
         header('Location: /login');

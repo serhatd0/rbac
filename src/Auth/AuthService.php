@@ -28,7 +28,7 @@ class AuthService
 
         $hash = password_hash($password, PASSWORD_BCRYPT);
         $userId = $this->userRepo->create($email, $hash);
-        
+
         // Assign default user role
         $this->userRepo->assignRole($userId, 'user');
 
@@ -55,9 +55,9 @@ class AuthService
     {
         // verify token
         $tokenData = $this->refreshService->verifyAndRevoke($refreshToken);
-        
-        // Revoke the generic one used for refresh? 
-        // The prompt says "Refresh token: 30 days...". 
+
+        // Revoke the generic one used for refresh?
+        // The prompt says "Refresh token: 30 days...".
         // Standard practice is rotation: revoke old, issue new.
         // Let's do rotation for better security.
         $this->refreshService->revoke($refreshToken);

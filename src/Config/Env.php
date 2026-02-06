@@ -23,7 +23,7 @@ class Env
             [$name, $value] = explode('=', $line, 2);
             $name = trim($name);
             $value = trim($value);
-            
+
             self::$variables[$name] = $value;
             putenv(sprintf('%s=%s', $name, $value));
             $_ENV[$name] = $value;

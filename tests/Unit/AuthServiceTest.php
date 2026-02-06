@@ -22,7 +22,7 @@ class AuthServiceTest extends TestCase
         $this->userRepo = $this->createMock(UserRepository::class);
         $this->refreshService = $this->createMock(RefreshTokenService::class);
         $this->jwt = new Jwt(); // Use real JWT for simplicity or mock it
-        
+
         $this->authService = new AuthService($this->userRepo, $this->refreshService, $this->jwt);
     }
 
@@ -31,7 +31,7 @@ class AuthServiceTest extends TestCase
         $email = 'test@example.com';
         $password = 'password';
         $hash = password_hash($password, PASSWORD_BCRYPT);
-        
+
         $user = ['id' => 1, 'email' => $email, 'password_hash' => $hash];
 
         $this->userRepo->method('findByEmail')->willReturn($user);
