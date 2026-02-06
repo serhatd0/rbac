@@ -9,10 +9,10 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 
 # Copy composer files first for caching
-COPY composer.json ./
+COPY composer.json composer.lock ./
 
-# Install dependencies (only if creating image for prod, but we mount volume in dev)
-# RUN composer install --no-dev --optimize-autoloader
+# Install dependencies
+RUN composer install --no-dev --optimize-autoloader --no-interaction --no-progress
 
 # Copy rest of the app
 COPY . .
