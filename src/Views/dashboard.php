@@ -1,5 +1,7 @@
-<?php $title = 'Dashboard - PHP JWT RBAC';
-require __DIR__ . '/layout/header.php'; ?>
+<?php
+$title = 'Dashboard - PHP JWT RBAC';
+require __DIR__ . '/layout/header.php';
+?>
 
 <div class="auth-container dashboard-container">
     <div class="card">
@@ -55,7 +57,8 @@ require __DIR__ . '/layout/header.php'; ?>
                 document.getElementById('userId').innerText = user.id;
                 document.getElementById('userEmail').innerText = user.email;
                 document.getElementById('userDate').innerText = user.created_at;
-                document.getElementById('tokenDisplay').value = localStorage.getItem('accessToken').substring(0, 40) + '...';
+                document.getElementById('tokenDisplay').value =
+                    localStorage.getItem('accessToken').substring(0, 40) + '...';
                 
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('content').style.display = 'block';
@@ -78,5 +81,7 @@ require __DIR__ . '/layout/header.php'; ?>
 
     loadProfile();
 </script>
-<?php $scripts = ob_get_clean();
-require __DIR__ . '/layout/footer.php'; ?>
+<?php
+$scripts = ob_get_clean();
+require __DIR__ . '/layout/footer.php';
+?>

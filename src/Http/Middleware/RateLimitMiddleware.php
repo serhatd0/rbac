@@ -31,7 +31,9 @@ class RateLimitMiddleware
         $limit = 5; // requests
         $window = 60; // seconds
 
-        $data = file_exists($file) ? json_decode(file_get_contents($file), true) : ['count' => 0, 'start_time' => time()];
+        $data = file_exists($file)
+            ? json_decode(file_get_contents($file), true)
+            : ['count' => 0, 'start_time' => time()];
 
         if (time() - $data['start_time'] > $window) {
             $data = ['count' => 1, 'start_time' => time()];

@@ -1,5 +1,7 @@
-<?php $title = 'Login - PHP JWT RBAC';
-require __DIR__ . '/layout/header.php'; ?>
+<?php
+$title = 'Login - PHP JWT RBAC';
+require __DIR__ . '/layout/header.php';
+?>
 
 <div class="auth-container">
     <div class="card">
@@ -56,5 +58,7 @@ require __DIR__ . '/layout/header.php'; ?>
         }
     });
 </script>
-<?php $scripts = ob_get_clean();
-require __DIR__ . '/layout/footer.php'; ?>
+<?php
+$scripts = ob_get_clean();
+require __DIR__ . '/layout/footer.php';
+?>
