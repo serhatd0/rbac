@@ -8,8 +8,16 @@ services:
     container_name: php_app
     restart: unless-stopped
     working_dir: /var/www/html
+    environment:
+      - DB_HOST=db
+      - DB_DATABASE=app_db
+      - DB_USERNAME=user
+      - DB_PASSWORD=password
+      - DB_PORT=3306
+      - JWT_SECRET=super_secret_key_change_me_in_prod
     volumes:
       - ./:/var/www/html
+      - /var/www/html/vendor
     networks:
       - app_network
 
