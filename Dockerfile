@@ -8,16 +8,14 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
 
-# Copy composer files first for caching
-COPY composer.json ./
+# Copy composer files first (for layer caching)
+COPY composer.json composer.lock* ./
 
-# Install dependencies (only if creating image for prod, but we mount volume in dev)
-# RUN composer install --no-dev --optimize-autoloader
+# Install dependencies
+RUN composer install --no-dev --optimize-autoloader
 
-# Copy rest of the app
+# Copy rest of the app (vendor/ from above is kept; usually vendor is in .gitignore)
 COPY . .
 
 # Fix permissions
 RUN chown -R www-data:www-data /var/www/html
-
-RUN composer install --no-dev --optimize-autoloader
